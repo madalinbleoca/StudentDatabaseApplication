@@ -4,6 +4,7 @@ public class StudentDatabase {
         System.out.println("Welcome again!");
 
         Student student_1 = new Student();
+        student_1.enroll();
 
     }
 }
