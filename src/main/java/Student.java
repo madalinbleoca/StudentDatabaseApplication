@@ -4,12 +4,12 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Student {
-    private String firstName;
-    private String lastName;
-    private int gradeYear;
+    private final String firstName;
+    private final String lastName;
+    private final int gradeYear;
     private String studentID;
-    private String courses;
-    private int tuitionBalance;
+    private String courses = "";
+    private int tuitionBalance = 0;
     private final int costOfCourse = 500;
 
     private static final int MIN_ID = 1000;
@@ -49,7 +49,31 @@ public class Student {
     }
 
     // Enrol in courses
-    public void enroll(){}
+    public void enroll() {
+        StringBuilder enrolledCourses = new StringBuilder();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Enter course to enroll. Press Q to quit: ");
+            String course = scanner.nextLine();
+
+            if (course.equalsIgnoreCase("Q")) {
+                break;
+            }
+
+            if (!enrolledCourses.isEmpty()) {
+                enrolledCourses.append(", ");
+            }
+            enrolledCourses.append(course);
+            tuitionBalance += costOfCourse;
+        }
+        scanner.close();
+
+        courses = enrolledCourses.toString();
+
+        System.out.println("ENROLLED IN: " + courses);
+        System.out.println("TUITION BALANCE: " + tuitionBalance);
+    }
 
 }
 
