@@ -1,7 +1,4 @@
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class Student {
     private final String firstName;
@@ -30,7 +27,7 @@ public class Student {
 
         setStudentID();
 
-        System.out.println(firstName + " " + lastName + " " + gradeYear +" " + studentID);
+        System.out.println(firstName + " " + lastName + " Grade Year: " + gradeYear +" ID: " + studentID);
     }
 
     //Generate an Unique ID for Student
@@ -48,7 +45,7 @@ public class Student {
         return String.valueOf(newID);
     }
 
-    // Enrol in courses
+    // Enrol in courses plus value of tuition balance
     public void enroll() {
         StringBuilder enrolledCourses = new StringBuilder();
         Scanner scanner = new Scanner(System.in);
@@ -67,12 +64,31 @@ public class Student {
             enrolledCourses.append(course);
             tuitionBalance += costOfCourse;
         }
-        scanner.close();
+
 
         courses = enrolledCourses.toString();
 
         System.out.println("ENROLLED IN: " + courses);
-        System.out.println("TUITION BALANCE: " + tuitionBalance);
+    }
+
+    //Balance and tuition payment
+    public void viewBalance() {
+        System.out.println("Your balance is: €" + tuitionBalance);
+    }
+
+    public void payTuition() {
+        System.out.print("Enter your payment: €");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            int payment = scanner.nextInt();
+            tuitionBalance -= payment;
+            System.out.println("Thank you for your payment of €" + payment);
+            viewBalance();
+        }catch(NoSuchElementException elementException) {
+            System.out.println("Invalid input. Please enter a valid payment.");
+        }catch (IllegalStateException stateException) {
+            System.out.println("Transaction is close.");
+        }
     }
 
 }
