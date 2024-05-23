@@ -5,6 +5,7 @@ public class StudentDatabase {
 
         Student student_1 = new Student();
         student_1.enroll();
+        student_1.payTuition();
 
     }
 }
