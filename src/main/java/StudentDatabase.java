@@ -1,14 +1,19 @@
+import java.util.Scanner;
 
 public class StudentDatabase {
     public static void main(String[] args) {
         System.out.println("Welcome again!");
+        System.out.print("Enter number of new students to enroll: ");
+        Scanner scanner = new Scanner(System.in);
+        int numOfStudents = scanner.nextInt();
+        Student[] students = new Student[numOfStudents];
 
-        Student student_1 = new Student();
-        student_1.enroll();
-        student_1.payTuition();
-
-        System.out.println("——————————————————————————————————————————————————————");
-        System.out.println(student_1.toString());
-
+        for (int n = 0; n < numOfStudents; n++) {
+            students[n] = new Student();
+            students[n].enroll();
+            students[n].payTuition();
+            System.out.println("——————————————————————————————————————————————————————");
+            System.out.println(students[n].toString());
+        }
     }
 }
