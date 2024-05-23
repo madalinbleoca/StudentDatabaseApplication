@@ -26,8 +26,6 @@ public class Student {
         this.gradeYear = in.nextInt();
 
         setStudentID();
-
-        System.out.println(firstName + " " + lastName + " Grade Year: " + gradeYear +" ID: " + studentID);
     }
 
     //Generate an Unique ID for Student
@@ -65,10 +63,7 @@ public class Student {
             tuitionBalance += costOfCourse;
         }
 
-
         courses = enrolledCourses.toString();
-
-        System.out.println("ENROLLED IN: " + courses);
     }
 
     //Balance and tuition payment
@@ -91,5 +86,13 @@ public class Student {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Name: " + firstName + " " + lastName +
+                "\nGrade Level: " + gradeYear +
+                "\nStudent ID: " + studentID +
+                "\nCourses Enrolled: " + courses +
+                "\nBalance: €" + tuitionBalance;
+    }
 }
 

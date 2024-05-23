@@ -7,5 +7,8 @@ public class StudentDatabase {
         student_1.enroll();
         student_1.payTuition();
 
+        System.out.println("——————————————————————————————————————————————————————");
+        System.out.println(student_1.toString());
+
     }
 }
